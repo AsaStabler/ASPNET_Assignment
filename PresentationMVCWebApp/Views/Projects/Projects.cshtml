@@ -1,0 +1,21 @@
+﻿@{
+	ViewData["Title"] = "Projects";
+}
+
+<partial name="Partials/Sections/_AddProjectForm" />
+<partial name="Partials/Sections/_EditProjectForm" />
+
+<section id="projects">
+	<header>
+		<h2>@ViewData["Title"]</h2>
+		<button type="button" data-modal="true" data-target="#addProjectModal" class="btn btn-add btn-blue">Add Project</button>
+	</header>
+
+	<div class="surface">
+		<div>
+			<i class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
+		</div>
+		
+	</div>
+
+</section>
