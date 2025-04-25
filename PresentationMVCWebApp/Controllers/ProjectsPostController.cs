@@ -1,11 +1,12 @@
 ﻿using Business.Models;
+using Business.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationMVCWebApp.Controllers;
 
-public class ProjectsPostController : Controller
+public class ProjectsPostController(IProjectService projectService) : Controller
 {
-    //private readonly ProjectService _projectService
+    private readonly IProjectService _projectService = projectService;
 
     [HttpPost]
     public IActionResult AddProject(AddProjectForm form)
