@@ -16,6 +16,7 @@ public class AuthController(IAuthService authService) : Controller
         return View();
     }
 
+    
     //SignUp is the Registration page
     [HttpPost]
     public async Task<IActionResult> SignUp(SignUpViewModel model)
@@ -32,18 +33,19 @@ public class AuthController(IAuthService authService) : Controller
         var result = await _authService.SignUpAsync(signUpFormData);
         if (result.Succeeded)
         {
-            return RedirectToAction("Login", "Auth");
+            return RedirectToAction("SignIn", "Auth");
         }
 
         //Error msg to be displayed on View
         ViewBag.ErrorMessage = result.Error;
         return View(model);
     }
+    
 
     public IActionResult Login()
     {
-        return LocalRedirect("/projects");
-        //return View();
+        //return LocalRedirect("/projects");
+        return View();
     }
 
     //SignIn is the Login page

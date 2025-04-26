@@ -1,13 +1,14 @@
-/* fonts */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
 
 /* variable scheme */
 :root {
+    /* fonts */
     --font-standard: "Nunito", sans-serif;
     --font-logo: "Comfortaa", sans-serif;
     --font-fa-pro: "Font Awesome 6 Pro"; /* Ska ta bort ? */
     --font-fa-free: "Font Awesome 6 Free"; /* Ska ta bort ? */
+
     --font-regular: 400;
     --font-medium: 500;
     --font-semibold: 600;
@@ -54,15 +55,17 @@
     --darkpurple: #634CD4;
     --text-color: var(--dark-400);
     --text-muted-color: var(--gray-800);
-    --text-extra-muted-color: var(--gray-700);
+    --text-extra-muted-color: var(--gray-700); /* alt --gray-600 */
     --headline-color: var(--dark-100);
     --border-color: var(--gray-500);
-    --border-focus-color: var(--blue-accent);
-    --background-color: var(--white-300); /* figma orig. --white-200,  change to --white-300 to get more contrast to surface box*/
+    --border-focus-color: var(--blue-accent); /* alt --blue-semilight */
+    --background-color: var(--white-200); /* figma orig. --white-200,  change to --white-300 to get more contrast to surface box*/
     --auth-background-color: var(--gray-100); /* Ska ta bort ? */
 
-    --modal-screen-background-color: transparent; /* --dark-100-a enl. Hans video */
-    --modal-background-color: var(--white-100); /* Kolla färgen i figma! */
+    --divider-color: var(--gray-500);
+    --divider-background-color: var(--gray-100);
+    --modal-screen-background-color: transparent; /* --dark-100-a enl. Hans video */ /* --dark-opacity-20 */
+    --modal-background-color: var(--white-100); /* Kolla färgen i figma! */ /* alt. --white-200  */
 
     --error-background-color: var(--red-light);
     --error-text-color: var(--red-dark);
@@ -73,20 +76,34 @@
     --btn-blue-text-hover-color: var(--white-100);
     --btn-blue-border-hover-color: var(--white-100);
     --btn-blue-background-hover-color: var(--darkaccent);
-    --btn-gray-text-color: var(--dark-100);
-    --btn-gray-border-color: var(--white-300); /* figma orig. --white-200 */
-    --btn-gray-background-color: var(--white-400); /* figma orig. --white-200, first draft --white-300*/
 
-    --btn-gray-text-hover-color: var(--dark-100);
-    --btn-gray-border-hover-color: var(--gray-100);
-    --btn-gray-background-hover-color: var(--gray-100);
+
+    --btn-gray-text-color: var(--dark-100); /* --dark-400 */
+    --btn-gray-border-color: var(--white-300); /* figma orig. --white-200, Lång frontend video: */
+    --btn-gray-background-color: var(--white-200); /* samma, gray-500 */
+
+    --btn-gray-text-hover-color: var(--dark-100); /* white-100 */
+    --btn-gray-border-hover-color: var(--gray-100); /* white-100 */
+    --btn-gray-background-hover-color: var(--gray-100); /* dark blu*/
+
+    /* surface & card */
     --surface-color: var(--white-100);
+    --card-text-color: var(--dark-400);
+    --card-border-color: var(--white-100);
+    --card-background-color: var(--white-100);
+    /* links */
+    --link-color: var(--blue-accent);
+    --link-hover-color: var(--darkblue);
     --navlink-text-color: var(--text-color);
     --navlink-text-hover-color: var(--blue-accent);
     --navlink-text-active-color: var(--blue-accent);
     --navlink-background-color: transparent;
     --navlink-background-hover-color: var(--blue-accent-10);
     --navlink-background-active-color: var(--blue-accent-10);
+    /* border-radius & shadow */
+    --border-radius: 16px;
+    --border-radius-small: 14px;
+    --box-shadow: 0 5px 5px 1px rgba(0, 0,0, 0.05);
 }
 
 [data-theme="dark"] {
@@ -146,19 +163,55 @@ section > header {
 
 .surface {
     padding: 2rem;
-    border-radius: 16px;
-    background-color: var(--surface-color);
-    box-shadow: 0 4px 4px 3px rgba(196, 196, 196, 0.1);
+    color: var(--card-text-color);
+    background-color: var(--card-background-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 4px 3px rgba(196, 196, 196, 0.1);  /* ev. ändra till --box-shadow  */
 }
 
-/*
+.card1 {
+    padding: 1.2rem 1rem 1.2rem 1.5rem;
+    color: var(--card-text-color);
+    background-color: var(--card-background-color);
+    /*border: 1px, solid var(--card-border-color);*/
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    
+    /* put display here instead of in header, in order to make .card-body go to the center*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+    .card1 > .card-header {
+        /*
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        */
+        margin-top: 3rem;  /* here, instead of below under section id*/
+        margin-bottom: 2rem;
+        background-color: var(--card-background-color);
+    }
+
+    .card1 > .card-body {  
+        margin: 0 2rem;
+    }
+
+    .card1 > .card-footer {
+        margin-top: 2rem;
+    }
+
+
+    /*
 .temp {
     height: 600px;
     width: 450px;
 }
 */
 
-.portal {
+    .portal {
     display: grid;
     grid-template-columns: minmax(50px, 270px) 1fr;
     grid-template-rows: auto 1fr;
@@ -201,6 +254,7 @@ section > header {
 /* typography */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-standard);
+    color: var(--headline-color);
     margin: 0;
     padding: 0;
 }
@@ -248,17 +302,35 @@ tab-link {
     font-size: 15px;
 }
 
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: var(--font-regular);
+    font-style: normal;
+    font-family: var(--font-standard);
+    transition: color 0.1s ease-in-out, text-decoration 0.5s ease-in-out;
+}
+    a:hover{
+        transition: color 0.1s ease-in-out, text-decoration 0.5s ease-in-out;
+        color: var(--darkblue);
+        text-decoration: underline;
+    }
+
 /* buttons */
 .btn {
-    border-radius: 14px;
+    cursor: pointer;
+    border-radius: 16px;
     font-size: 1em;
     font-weight: var(--font-regular);
     font-family: var(--font-standard);
     padding: 0.7rem 1.5rem;
+    
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.5rem;  
 }
 
 .btn-blue {
@@ -277,12 +349,14 @@ tab-link {
     color: var(--btn-gray-text-color);
     border-color: var(--btn-gray-border-color);
     background-color: var(--btn-gray-background-color);
+    border: 1px solid var(--btn-gray-border-color);
 }
 
     .btn-gray:hover {
         color: var(--btn-gray-text-hover-color);
         border-color: var(--btn-gray-border-hover-color);
         background-color: var(--btn-gray-background-hover-color);
+        border: 1px solid var(--btn-gray-border-hover-color);
     }
 
 .btn-add::before {
@@ -292,7 +366,7 @@ tab-link {
 
 .btn-close {
     cursor: pointer;
-    font-size: 2em;
+    font-size: 1.5em;
     border: none;
     background-color: transparent;
     color: var(--text-color);
@@ -312,6 +386,16 @@ tab-link {
     margin-bottom: 0.5rem;
 }
 
+.btn-external {
+    /* width: 100%;  Didn´t work */
+    width: 400px;
+    font-weight: var(--font-semibold);
+    text-decoration: none;
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 1fr auto;
+}
+
 /* lists */
 
 /* components */
@@ -326,6 +410,12 @@ tab-link {
     align-items: center;
     gap: 0.5rem;
 }
+    .alpha-logotype:hover,
+    .alpha-logotype a:hover{
+        text-decoration: none;
+        color: var(--text-color);
+    }
+
 
 .nav-links {
     margin: 2rem 0;
@@ -356,6 +446,10 @@ tab-link {
             background-color: var(--navlink-background-active-color);
         }
 
+.or-divider {
+    margin: 2rem 0;
+}
+
 /* forms */
 form {
     width: 100%;
@@ -380,13 +474,17 @@ form {
         position: relative; 
     }
 
+    form label{
+        font-weight: var(--font-semibold);
+    }
+
     form input,
     form select,
     form textarea {
         width: 100%;
         font-size: 1em;
         padding: 0.5rem 1rem;
-        border-radius: 16px;
+        border-radius: var(--border-radius-small);
         border: 1px solid var(--border-color);
         outline: none;
         transition: border-color 0.1s ease-in-out;
@@ -436,6 +534,26 @@ form {
         form .form-input-extended .indent {
             padding-left: 2rem;
         }
+
+    form .form-checkbox {
+        height: 16px;
+        width: 16px;
+        border-radius: var(--border-radius);
+        color: var(--form-checkbox-checked-color);  /* färg har inte satts */
+    }
+    form .form-checkbox-group {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+    }
+    form .form-checkbox-group .form-label {
+        font-weight: var(--font-regular);
+        margin-top: 2px;
+        cursor: pointer;
+    }
+
 
 /* image-previewer */
 .image-previewer {
@@ -504,6 +622,23 @@ form {
 
 
 /* sections */
+#signup .card1 {
+    /* text-align: center; */
+    width: 600px;
+}
+
+/*
+#signup .card-header{
+    justify-content: center;
+    margin-top: 3rem;
+}
+*/
+
+#login .card1 {
+    width: 600px;
+}
+
+
 #projects {
     display: grid;
     grid-template-rows: auto 1fr;

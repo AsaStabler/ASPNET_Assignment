@@ -4,13 +4,13 @@ namespace PresentationMVCWebApp.Models;
 
 public class SignInViewModel
 {
-    [RegularExpression(@"")]
+    /* [RegularExpression(@"")] */
     [Display(Name = "Email", Prompt = "Enter email address")]
     [DataType(DataType.EmailAddress)]
     [Required(ErrorMessage = "Required")]
     public string Email { get; set; } = null!;
 
-    [RegularExpression(@"")]
+    /* [RegularExpression(@"")] */
     [Display(Name = "Password", Prompt = "Enter password")]
     [DataType(DataType.Password)]
     [Required(ErrorMessage = "Required")]
