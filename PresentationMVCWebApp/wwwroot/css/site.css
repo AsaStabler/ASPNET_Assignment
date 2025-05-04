@@ -6,8 +6,8 @@
     /* fonts */
     --font-standard: "Nunito", sans-serif;
     --font-logo: "Comfortaa", sans-serif;
-    --font-fa-pro: "Font Awesome 6 Pro"; /* Ska ta bort ? */
-    --font-fa-free: "Font Awesome 6 Free"; /* Ska ta bort ? */
+    --font-fa-pro: "Font Awesome 6 Pro";   /* ToDo */
+    --font-fa-free: "Font Awesome 6 Free"; /* ToDo */
 
     --font-regular: 400;
     --font-medium: 500;
@@ -41,8 +41,8 @@
     --orange: #FF9640;
     --orange-dark: #F09330;
     --red: #FF6640;
-    --red-light: #f5d6cf; /* Ska ändra färg */
-    --red-semilight: #f9947b; /* Ska ändra färg */
+    --red-light: #f5d6cf;       /* Color to be changed */
+    --red-semilight: #f9947b;   /* Color to be changed */
     --red-dark: #E94D3F;
     --green: #31D482;
     --green-dark: #24B26B;
@@ -59,13 +59,13 @@
     --headline-color: var(--dark-100);
     --border-color: var(--gray-500);
     --border-focus-color: var(--blue-accent); /* alt --blue-semilight */
-    --background-color: var(--white-200); /* figma orig. --white-200,  change to --white-300 to get more contrast to surface box*/
-    --auth-background-color: var(--gray-100); /* Ska ta bort ? */
+    --background-color: var(--white-200);
+    --auth-background-color: var(--gray-100); /* To be removed */
 
     --divider-color: var(--gray-500);
     --divider-background-color: var(--gray-100);
-    --modal-screen-background-color: transparent; /* --dark-100-a enl. Hans video */ /* --dark-opacity-20 */
-    --modal-background-color: var(--white-100); /* Kolla färgen i figma! */ /* alt. --white-200  */
+    --modal-screen-background-color: transparent; /* --dark-100-a see video */ 
+    --modal-background-color: var(--white-100); 
 
     --error-background-color: var(--red-light);
     --error-text-color: var(--red-dark);
@@ -76,16 +76,13 @@
     --btn-blue-text-hover-color: var(--white-100);
     --btn-blue-border-hover-color: var(--white-100);
     --btn-blue-background-hover-color: var(--darkaccent);
-
-
     --btn-gray-text-color: var(--dark-100); /* --dark-400 */
-    --btn-gray-border-color: var(--white-300); /* figma orig. --white-200, Lång frontend video: */
+    --btn-gray-border-color: var(--white-300); 
     --btn-gray-background-color: var(--white-200); /* samma, gray-500 */
 
     --btn-gray-text-hover-color: var(--dark-100); /* white-100 */
     --btn-gray-border-hover-color: var(--gray-100); /* white-100 */
     --btn-gray-background-hover-color: var(--gray-100); /* dark blu*/
-
     /* surface & card */
     --surface-color: var(--white-100);
     --card-text-color: var(--dark-400);
@@ -166,31 +163,23 @@ section > header {
     color: var(--card-text-color);
     background-color: var(--card-background-color);
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 4px 3px rgba(196, 196, 196, 0.1);  /* ev. ändra till --box-shadow  */
+    box-shadow: 0 4px 4px 3px rgba(196, 196, 196, 0.1);  
 }
 
 .card1 {
     padding: 1.2rem 1rem 1.2rem 1.5rem;
     color: var(--card-text-color);
     background-color: var(--card-background-color);
-    /*border: 1px, solid var(--card-border-color);*/
+    border: 1px, solid var(--card-border-color);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
-    
-    /* put display here instead of in header, in order to make .card-body go to the center*/
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
-    .card1 > .card-header {
-        /*
-        display: flex;
+    .card1 > .card-header {        
+        /*display: flex;
         justify-content: space-between;
-        align-items: center;
-        */
-        margin-top: 3rem;  /* here, instead of below under section id*/
+        align-items: center;*/
+                
         margin-bottom: 2rem;
         background-color: var(--card-background-color);
     }
@@ -203,15 +192,41 @@ section > header {
         margin-top: 2rem;
     }
 
-
-    /*
-.temp {
-    height: 600px;
-    width: 450px;
+.dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 110%;
+    background-color: var(--card-background-color); /* var(--dropdown-background-color) */
+    border: 1px solid var(--dropdown-border-color); /* color not set */
+    color: var(--dropdown-text-color);              /* color not set */
+    padding: 2rem;
+    border-radius: var(--border-radius-small);
+    box-shadow: var(--box-shadow);
 }
-*/
+    .dropdown .dropdown-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .dropdown .dropdown-body {
+    }
+    .dropdown .dropdown-footer {
+    }
+    .dropdown .divider {
+        margin: 1rem 0;
+    }
+    .dropdown .dropdown-actions{
+        display: grid;
+        gap: 2rem;
+        margin-top: 0.5rem;
+    }
 
-    .portal {
+.dropdown-show {
+    display: flex;
+}
+
+.portal {
     display: grid;
     grid-template-columns: minmax(50px, 270px) 1fr;
     grid-template-rows: auto 1fr;
@@ -239,17 +254,19 @@ section > header {
         grid-template-columns: 1fr auto;
         gap: 5rem;
         align-items: center;
-        /*  FIRST DRAFT 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        */
     }
 
     .portal > .main {
         grid-area: main;
         padding: 2rem;
     }
+
+/*.project-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}*/
+
 
 /* typography */
 h1, h2, h3, h4, h5, h6 {
@@ -321,7 +338,7 @@ a {
 /* buttons */
 .btn {
     cursor: pointer;
-    border-radius: 16px;
+    border-radius: var(--border-radius);
     font-size: 1em;
     font-weight: var(--font-regular);
     font-family: var(--font-standard);
@@ -387,6 +404,7 @@ a {
 }
 
 .btn-external {
+    transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out, color 0.1s ease-in-out;
     /* width: 100%;  Didn´t work */
     width: 400px;
     font-weight: var(--font-semibold);
@@ -395,6 +413,27 @@ a {
     align-items: center;
     grid-template-columns: auto 1fr auto;
 }
+
+.btn-action {
+    transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out, color 0.1s ease-in-out;
+    cursor: pointer;
+    background-color: transparent; /* var(--btn-close-background-color) - color not yet set */
+    border: 1px solid var(--btn-close-border-color); /*color not set*/
+    border-radius: var(--border-radius-small);
+    z-index: 999;
+    color: var(--gray-800); /*var(--text-color);*/ /* var(--btn-close-text-color) */
+    font-size: 1.4rem;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    .btn-action:hover {
+        background-color: var(--btn-close-background-hover-color); /*color not yet set*/
+        border: 1px solid var(--btn-close-border-hover-color); /*color not yet set*/
+        color: var(--text-color); /* var(--btn-close-text-hover-color) */
+        text-decoration: none;
+    }
 
 /* lists */
 
@@ -415,7 +454,6 @@ a {
         text-decoration: none;
         color: var(--text-color);
     }
-
 
 .nav-links {
     margin: 2rem 0;
@@ -446,9 +484,85 @@ a {
             background-color: var(--navlink-background-active-color);
         }
 
-.or-divider {
+.divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 2rem 0;
+
 }
+    .divider::before,
+    .divider::after {
+        content: '';
+        flex: 1;
+        border-bottom: 1px solid var(--divider-color);
+    }
+    .divider:not(:empty)::before {
+        margin-right: 1rem;
+    }
+    .divider:not(:empty)::after {
+        margin-left: 1rem;
+    }
+    .divider span {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        color: var(--text-muted-color);
+    }
+
+.project  {
+}
+
+.project .card-header {
+    position: relative; /* position:absolute ligger under .dropdown */
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "img name action" "img client action";
+    align-items: center;
+    column-gap: 2rem;
+
+}
+    .project .project-image {
+        grid-area: img;
+        width: 56px;
+        height: 56px;
+        overflow: hidden;
+        border-radius: var(--border-radius-small)
+    }
+    .project img {
+        width: 56px;
+        height: 56px;
+        object-fit: contain;
+    }
+    .project .project-name {
+        grid-area: name;
+    }
+    .project .client-name {
+        grid-area: client;
+        color: var(--text-muted-color);
+    }
+    .project .btn-action {  /*eg.  project-actions (see video)  */
+        grid-area: action;
+    } 
+
+    .project .dropdown {
+        box-shadow: 0 0 5px 2px rgba(137, 137 137. 0.1);
+        width: 220px;
+    }
+
+    #project-actions-container {
+        position: relative; /* position:absolute ligger under .dropdown */
+    }
+
+    .project .card-body {
+        min-height: 100px;
+    }
+
+    .project .card-footer {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+    }
+
 
 /* forms */
 form {
@@ -478,8 +592,8 @@ form {
         font-weight: var(--font-semibold);
     }
 
+    /*form select,*/
     form input,
-    form select,
     form textarea {
         width: 100%;
         font-size: 1em;
@@ -489,18 +603,102 @@ form {
         outline: none;
         transition: border-color 0.1s ease-in-out;
     }
+
+        /*form select:focus,*/
         form input:focus,
-        form select:focus,
         form textarea:focus {
             border: 1px solid var(--border-focus-color);
         }
 
+        /*form select::placeholder,*/
         form input::placeholder,
-        form select::placeholder,
         form textarea::placeholder {
             color: var(--text-extra-muted-color);
             font-size: 0.9em;
         }
+
+.form-select {
+    position: relative;
+    font-family: var(--font-standard);
+    border-radius: var(--border-radius-small);
+    width: 100%;
+}
+/*      form .form-select .has-placeholder .form-select-trigger {
+            color: var(--form-input-placeholder-color);
+            font-size: 0.9em;
+        }
+        form .form-select:not(.has-placeholder) .form-select-trigger {
+            color: var(--form-input-text-color);
+        }*/
+
+        .form-select .form-select-trigger {
+            width: 100%;
+            min-height: 40px;
+            background-color: var(--form-input-background-color);
+            border: 1px solid var(--form-input-border-color);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-small);
+            font-size: 1em;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: border-color 0.2s ease-in-out;
+            position: relative;
+        }
+            .form-select .form-select-trigger .form-select-text {
+                flex: 1;
+                text-align: left;
+            }
+            .form-select .form-select-trigger::before {
+                content: '\f141';
+                font-family: var(--font-fa-pro);
+                color: var(--form-input-text-color);
+                position: absolute;
+                right: 1rem;
+                pointer-events: none;
+            }
+
+        .form-select .form-select-options {
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 0;
+            width: 100%;
+            background-color: var(--form-input-background-color);
+            border: 1px solid var(--form-input-border-color);
+            border-radius: var(--border-radius-small);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            z-index: 999;
+            display: none;
+        }
+            .form-select .form-select-option {
+                padding: 0.5rem 1rem;
+                cursor: pointer;
+                transition: background-color 0.1s ease-in-out;
+                border-radius: var(--border-radius-small);
+                margin: 0.5rem;
+
+            }
+            .form-select .form-select-option:hover {
+                background-color: var(--blue-accent-10);
+            }
+
+    /*  Alt. 1
+   .form-select .open .form-select-options {
+        display: block;
+    }*/
+
+/*  Alt. 2
+.form-select {
+    &.open {
+        .form-select-options {
+            display: block;
+        }
+    }
+} */
 
     form .input-validation-error {
         border-color: var(--error-border-color);
@@ -539,7 +737,7 @@ form {
         height: 16px;
         width: 16px;
         border-radius: var(--border-radius);
-        color: var(--form-checkbox-checked-color);  /* färg har inte satts */
+        color: var(--form-checkbox-checked-color);  /* color not set */
     }
     form .form-checkbox-group {
         display: grid;
@@ -595,7 +793,7 @@ form {
 /* modals */
 .modal {
     display: none;
-    /* display: flex; */ /* Ska ta bort */
+    /* display: flex; */ 
     justify-content: center;
     align-items: center;
     background-color: var(--modal-screen-background-color);
@@ -625,25 +823,42 @@ form {
 #signup .card1 {
     /* text-align: center; */
     width: 600px;
-}
-
-/*
-#signup .card-header{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin-top: 3rem;
+    align-items: center;
 }
-*/
+    #signup .card-header {
+        margin-top: 3rem;  
+    }
 
 #login .card1 {
     width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-
+    #login .card-header {
+        margin-top: 3rem; 
+    }
 
 #projects {
     display: grid;
     grid-template-rows: auto 1fr;
-    height: 100%;
+    /*  height: 100%;*/
 }
+    #projects .project-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+
+/*  #projects .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }*/
 
 #team-members {
     display: grid;

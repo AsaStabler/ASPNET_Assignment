@@ -15,12 +15,12 @@
                 <div class="card-body">
                     <form method="post" asp-controller="" asp-action="" novalidate>
                         <button type="submit" class="btn btn-gray btn-external">
-                            <img src="images/icons/google-icon.svg" alt="google icon" />
+                            <img src="/images/icons/google-icon.svg" alt="google icon" />
                             <span>Sign Up with Google</span>
                          </button>
                     </form>
 
-                    <div class="or-divider"><span>or</span></div>
+                    <div class="divider"><span>or</span></div>
 
                     <form method="post" asp-controller="Auth" aps-action="SignUp" novalidate>
                         <div class="form-group">
@@ -70,7 +70,7 @@
                         <button type="submit" class="btn btn-submit btn-blue">Create Account</button>
                     </form>
                 </div>
-                <div class="card-footer">Already have an account? <a href="~/">Log in</a></div>
+                <div class="card-footer">Already have an account? <a href="@Url.Action("SignIn", "Auth")">Log in</a></div>
             </div>
         </section>
     </main>

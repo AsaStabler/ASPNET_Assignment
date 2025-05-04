@@ -1,6 +1,8 @@
-﻿using Business.Models;
-using Business.Services;
+﻿using Business.Services;
+using Domain.Extensions;
+using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
+using PresentationMVCWebApp.Models;
 
 namespace PresentationMVCWebApp.Controllers;
 
@@ -9,7 +11,7 @@ public class ProjectsPostController(IProjectService projectService) : Controller
     private readonly IProjectService _projectService = projectService;
 
     [HttpPost]
-    public IActionResult AddProject(AddProjectForm form)
+    public async Task<IActionResult> AddProject(AddProjectViewModel form)
     {
         if (!ModelState.IsValid)
         {
@@ -23,23 +25,28 @@ public class ProjectsPostController(IProjectService projectService) : Controller
             return BadRequest(new { success = false, errors });
         }
 
-        /* Send data to projectService
-        var result = await _projectService.AddProjectAsync(form);
-        if (result)
-        {
-            return Ok(new { success = true });
-        }
-        else
-        {
-            return Problem("Unable to submit data.");
-        } */
+        //Map from an AddProjectViewModel to an AddProjectFormData  
+        var projectFormData = form.MapTo<AddProjectFormData>();
+
+        //Send data to projectService
+        var result = await _projectService.CreateProjectAsync(projectFormData);
+
+        //TO DO: Handle result!
+        //if (result)
+        //{
+        //    return Ok(new { success = true });
+        //}
+        //else
+        //{
+        //    return Problem("Unable to submit data.");
+        //}
 
         //return RedirectToAction("Projects", "Projects");
         return Ok();
     }
 
     [HttpPost]
-    public IActionResult EditProject(EditProjectForm form)
+    public async Task<IActionResult> EditProject(EditProjectViewModel form)
     {
         if (!ModelState.IsValid)
         {
@@ -53,19 +60,34 @@ public class ProjectsPostController(IProjectService projectService) : Controller
             return BadRequest(new { success = false, errors });
         }
 
-        /* Send data to projectService
-        var result = await _projectService.AddProjectAsync(form);
-        if (result)
-        {
-            return Ok(new { success = true });
-        }
-        else
-        {
-            return Problem("Unable to submit data.");
-        } */
+        //Map from an EditProjectViewModel to an EditProjectFormData  
+        var projectFormData = form.MapTo<EditProjectFormData>();
+
+        //Send data to projectService
+        var result = await _projectService.UpdateProjectAsync(projectFormData);
+
+        //TO DO: Handle result!
+        //if (result)
+        //{
+        //    return Ok(new { success = true });
+        //}
+        //else
+        //{
+        //    return Problem("Unable to submit data.");
+        //}
 
         //return RedirectToAction("Projects", "Projects");
         return Ok();
     }
-    
+
+    public async Task<IActionResult> DeleteProject(string id)
+    {
+        var result = await _projectService.DeleteProjectAsync(id);
+
+        //TO DO: Handle result!
+
+        //return View();
+        return RedirectToAction("Projects", "Projects");
+    }
+
 }

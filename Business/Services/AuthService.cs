@@ -23,8 +23,6 @@ public class AuthService(IUserService userService, SignInManager<UserEntity> sig
         if (formData == null)
             return new AuthResult { Succeeded = false, StatusCode = 400, Error = "Not all required fields were supplied." };
 
-        
-
         var result = await _signInManager.PasswordSignInAsync(formData.Email, formData.Password, formData.IsPersistent, false);
         return result.Succeeded
             ? new AuthResult { Succeeded = true, StatusCode = 200 }

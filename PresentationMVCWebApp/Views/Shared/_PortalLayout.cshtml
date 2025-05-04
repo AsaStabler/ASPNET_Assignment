@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model ProjectsViewModel
+<!DOCTYPE html>
 <html lang="en" not_data-theme="dark">
 <head>
     <meta charset="utf-8" />
@@ -13,8 +14,8 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/PresentationMVCWebApp.styles.css" asp-append-version="true" />
 </head>
-<body>
-
+@* <body onload="openEditProjectModal('yes')"> *@
+<body onload="openEditProjectModal('@Model.OpenEdit')">
     <div class="portal">
         <div class="logotype">
             @await Html.PartialAsync("Partials/Components/_AlphaLogotype")

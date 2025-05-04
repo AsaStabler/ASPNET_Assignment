@@ -44,6 +44,7 @@ public class UserService(IUserRepository userRepository, UserManager<UserEntity>
             var userEntity = formData.MapTo<UserEntity>();
 
             //Create a new User in database
+            userEntity.UserName = userEntity.Email;
             var result = await _userManager.CreateAsync(userEntity, formData.Password);
             if (result.Succeeded)
             {
@@ -64,6 +65,7 @@ public class UserService(IUserRepository userRepository, UserManager<UserEntity>
 
     public async Task<UserResult> AddUserToRoleAsync(string userId, string roleName)
     {
+        //Role 'User' does not yet exist /2025-05-03
         if (!await _roleManager.RoleExistsAsync(roleName))
             return new UserResult { Succeeded = false, StatusCode = 404, Error = "Role doesn't exist." };
 

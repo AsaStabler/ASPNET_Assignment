@@ -1,15 +1,24 @@
 ﻿/* using Microsoft.AspNetCore.Http; */
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
-namespace Business.Models;
+namespace PresentationMVCWebApp.Models;
 
-public class EditProjectForm
+
+public class EditProjectViewModel
 {
-    public int Id { get; set; }
+
+    //public IEnumerable<SelectListItem> Clients { get; set; } = [];
+
+    //public IEnumerable<SelectListItem> Members { get; set; } = [];
+
+    //public IEnumerable<SelectListItem> Statuses { get; set; } = [];
+
+    public string Id { get; set; } = null!;
 
     [Display(Name = "Project Image", Prompt = "Select an image")]
     [DataType(DataType.Upload)]
-    public string? ProjectImage { get; set; }
+    public string? Image { get; set; }
     /* [DataType(DataType.Upload)]
     public IFormFile? ProjectImage { get; set; } */
 
@@ -23,14 +32,14 @@ public class EditProjectForm
     [Required(ErrorMessage = "Required")]
     public string ClientName { get; set; } = null!;
 
-    [Display(Name = "Description", Prompt = "Enter a Project description")] /* 'Type something' enl. Figmafilen */
+    [Display(Name = "Description", Prompt = "Enter a Project description")] 
     [DataType(DataType.Text)]
     public string? Description { get; set; }
 
     [Display(Name = "Start Date", Prompt = "Enter Start date")]
     [DataType(DataType.DateTime)]
     [Required(ErrorMessage = "Required")]
-    public DateTime StartDate { get; set; } = DateTime.Now;
+    public DateTime StartDate { get; set; }
 
     [Display(Name = "End Date", Prompt = "Enter End date")]
     [DataType(DataType.DateTime)]
@@ -38,5 +47,8 @@ public class EditProjectForm
 
     [Display(Name = "Budget", Prompt = "")]
     [DataType(DataType.Currency)]
-    public double? Budget { get; set; }
+    public decimal? Budget { get; set; }
 }
+
+
+

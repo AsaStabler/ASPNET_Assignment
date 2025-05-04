@@ -16,7 +16,6 @@ public class AuthController(IAuthService authService) : Controller
         return View();
     }
 
-    
     //SignUp is the Registration page
     [HttpPost]
     public async Task<IActionResult> SignUp(SignUpViewModel model)
@@ -41,27 +40,29 @@ public class AuthController(IAuthService authService) : Controller
         return View(model);
     }
     
-
+    /*  TEST - for testing only
     public IActionResult Login()
     {
-        //return LocalRedirect("/projects");
-        return View();
-    }
+        return LocalRedirect("/projects");
+        //return View();
+    } */
 
     //SignIn is the Login page
-    public IActionResult SignIn(string returnUrl = "~/")
+    //public IActionResult SignIn(string returnUrl = "~/")
+    public IActionResult SignIn()
     {
-        ViewBag.ReturnUrl = returnUrl;
+        //ViewBag.ReturnUrl = returnUrl;
 
         return View();
     }
 
     //SignIn is the Login page
     [HttpPost]
-    public async Task<IActionResult> SignIn(SignInViewModel model, string returnUrl = "~/")
+    //public async Task<IActionResult> SignIn(SignInViewModel model, string returnUrl = "~/")
+    public async Task<IActionResult> SignIn(SignInViewModel model)
     {
         ViewBag.ErrorMessage = null;
-        ViewBag.ReturnUrl = returnUrl;
+        //ViewBag.ReturnUrl = returnUrl;
 
         if (!ModelState.IsValid)
             return View(model);
@@ -73,7 +74,10 @@ public class AuthController(IAuthService authService) : Controller
         var result = await _authService.SignInAsync(signInFormData);
         if (result.Succeeded)
         {
-            return LocalRedirect(returnUrl);
+            //return LocalRedirect(returnUrl);
+            //return LocalRedirect("/projects"); //Doesn't work - ends up back at SignIn view
+            //return RedirectToAction("SignUp", "Auth"); //Doesn't work - ends up back at SignIn view
+            return RedirectToAction("Projects", "Projects"); //Doesn't work - ends up back at SignIn view 
         }
 
         //Error msg to be displayed on View

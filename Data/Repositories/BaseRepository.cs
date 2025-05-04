@@ -143,6 +143,9 @@ public abstract class BaseRepository<TEntity, TModel> : IBaseRepository<TEntity,
 
         try
         {
+            //Context.Entry(entity).State = EntityState.Detached;
+            _context.ChangeTracker.Clear();
+
             _table.Remove(entity);
             await _context.SaveChangesAsync();
             return new RepsitoryResult<bool> { Succeeded = true, StatusCode = 200 };

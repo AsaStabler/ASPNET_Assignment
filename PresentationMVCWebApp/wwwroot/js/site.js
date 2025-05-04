@@ -1,5 +1,5 @@
 ﻿document.addEventListener('DOMContentLoaded', () => {
-    console.log(0)
+    //console.log(0)
     const previewSize = 150
 
     // Open modal
@@ -11,6 +11,13 @@
 
             if (modal)
                 modal.style.display = 'flex';
+
+            if (modalTarget == '#editProjectModal') {
+                console.log('EditProjectModalen kommer att öppnas.')
+                //document.getElementById('ProjectName').value = "My Text Input";
+                console.log(document.getElementById('ProjectName').value)
+
+            }
         })
     })
 
@@ -22,6 +29,8 @@
 
             if (modal) { 
                 modal.style.display = 'none';
+
+                //console.log(document.getElementById('ProjectName').value)
 
                 // Clear formdata and errormessages
                 modal.querySelectorAll('form').forEach(form => {
@@ -42,8 +51,89 @@
         })
     })
 
-    // handle image-previewer
+    // handle dropdowns
+    const dropdowns = document.querySelectorAll('[data-type="dropdown"]')
+    //console.log(dropdowns)
+
+    document.addEventListener('click', function (event) { 
+        let clickedDropdown = null
+
+        dropdowns.forEach(dropdown => {           
+            const targetId = dropdown.getAttribute('data-target')
+            const targetElement = document.querySelector(targetId)
+            //console.log(targetId)
+
+            if (dropdown.contains(event.target)) {
+                clickedDropdown = targetElement
+
+                document.querySelectorAll('.dropdown.dropdown-show').forEach(openDropdown => {
+                    if (openDropdown !== targetElement) {
+                        openDropdown.classList.remove('dropdown-show')
+                    }
+                })
+                targetElement.classList.toggle('dropdown-show')
+            }
+        })
+
+        if (!clickedDropdown && !event.target.closest('.dropdown')) {
+            document.querySelectorAll('.dropdown.dropdown-show').forEach(openDropdown => {
+                openDropdown.classList.remove('dropdown-show')
+            })
+        }
+    })
+
+    /* handle Custom Select
+    document.querySelector('.form-select').forEach(select => {
+        const trigger = select.querySelector('.form-select-trigger')
+        const triggerText = trigger.querySelector('.form-select-text')
+        const options = select.querySelectorAll('.form-select-option')
+        const hiddenInput = select.querySelector('input[type="hidden"]')
+        const placeholder = select.dataset.placeholder || "Choose"
+
+        const setValue = (value = "", text = placeholder) => {
+            triggerText.textContent = text
+            hiddenInput.value = value
+            select.classList.toggle('has-placeholder', !value)
+        };
+
+        setValue()
+
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.querySelectorAll('.form-select-open')
+                .forEach(el => el !== select && el.classList.remove('open'))
+            select.classList.toggle('open')
+        })
+
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                setValue(option.dataset.value, option.textContent)
+                select.classList.remove('open')
+            })
+        })
+
+        document.addEventListener('click', e => {
+            if (!select.contains(e.target))
+                select.classList.remove('open')
+        })
+    }) */
+
     
+    /* handle image-previewer
+    document.querySelectorAll('.image-previewer').forEach(previewer => {
+        const fileInput = previewer.querySelector('input[type="file"]')
+        const imagePreview = previewer.querySelector('.image-preview')
+
+        previewer.addEventListener('click', () => fileInput.click())
+
+        fileInput.addEventListener('change', ({ target: { files } }) => {
+            const file = files[0]
+            if (file)
+                processImage(file, imagePreview, previewer, previewSize)
+
+        })
+    }) */
+
 
     // handle submit forms
     const forms = document.querySelectorAll('form')
@@ -60,8 +150,7 @@
                     method: 'post',
                     body: formData
                 })
-                console.log(3)
-
+                
                 if (res.ok) {
                     const modal = form.closest('.modal')
                    
@@ -97,6 +186,28 @@
     })
 
 })
+
+function openEditProjectModal(param) {
+    console.log("hej från site.js");
+
+    if (param == 'yes')
+        console.log("param är yes");
+
+    if (param == 'no')
+        console.log("param är no");
+
+    if (param == '')
+        console.log("param är blank");
+
+    if (param == 'yes') { 
+        const modal = document.querySelector('#editProjectModal')
+
+        if (modal)
+            modal.style.display = 'flex';
+
+        console.log("flex has been set");
+    }
+}
 
 function clearErrorMessages(form) {
     form.querySelectorAll('[data-val="true"]').forEach(input => {

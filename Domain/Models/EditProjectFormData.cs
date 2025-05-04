@@ -1,7 +1,9 @@
 ﻿namespace Domain.Models;
 
-public class AddProjectFormData
+public class EditProjectFormData
 {
+    public string Id { get; set; } = null!;
+
     public string? Image { get; set; }
 
     public string ProjectName { get; set; } = null!;
@@ -18,6 +20,5 @@ public class AddProjectFormData
 
     public User User { get; set; } = null!;
 
-    //Hard coded to Status id=1, "Started"
     public Status Status { get; set; } = null!;
 }

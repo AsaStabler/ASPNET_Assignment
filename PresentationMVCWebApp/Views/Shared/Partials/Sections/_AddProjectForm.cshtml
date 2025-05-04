@@ -1,4 +1,4 @@
-﻿@model AddProjectForm
+﻿@model AddProjectViewModel
 
 <div id="addProjectModal" class="modal">
 	<div class="modal-content">
@@ -12,7 +12,7 @@
 			
 			<div class="image-previewer circle">
 				<img src="" class="image-preview" />
-				<input asp-for="ProjectImage" accept="image/*" class="hide" />
+				<input asp-for="Image" accept="image/*" class="hide" />
 			</div>
 			
 			<div class="form-group">
@@ -29,6 +29,28 @@
 					<span asp-validation-for="ClientName"></span>
 				</div>
 			</div>
+
+			@* <label class="form-label">Testing</label>
+			<select class="form-select">
+				<option value="">Choose no 1</option>
+				<option value="">Choose no 2</option>
+				<option value="">Choose no 3</option>	
+			</select> *@
+
+			@* <div class="form-group">
+				<label class="form-label">Client</label>
+				<div class="form-select" data-placeholder="Choose a client">
+					<button type="button" class="form-select-trigger">
+						<span class="form-select-text"></span>
+					</button>
+					<ul class="form-select-options">
+						<li class="form-select-option" data-value="1">Client 1</li>
+						<li class="form-select-option" data-value="2">Client 2</li>
+					</ul>
+					<input type="hidden" name="client-select-value" />
+				</div>
+			</div> *@
+
 			<div class="form-group">
 				<label asp-for="Description"></label>
 				<div class="field-group">
@@ -65,7 +87,7 @@
 				<label asp-for="Budget"></label>
 				<div class="field-group form-input-extended">
 					<i class="fa-duotone fa-solid fa-dollar-sign"></i>
-					<input class="indent" type="text" asp-for="Budget" />
+					<input class="indent" type="currency" asp-for="Budget" />
 					<span asp-validation-for="Budget"></span>
 				</div>
 			</div>

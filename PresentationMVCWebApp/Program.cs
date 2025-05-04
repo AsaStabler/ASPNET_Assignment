@@ -19,7 +19,7 @@ builder.Services.AddIdentity<UserEntity, IdentityRole>(x =>
     x.Password.RequiredLength = 8;
 }).AddEntityFrameworkStores<DataContext>().AddDefaultTokenProviders();
 
-/*  Cookie handling - NOT Ok!!! -- Accepterar inte Cookie.Expiration
+/*  Cookie handling - NOT Ok! -- Accepterar inte Cookie.Expiration
 builder.Services.ConfigureApplicationCookie(x =>
 {
     x.LoginPath = "/auth/signin";
@@ -54,8 +54,7 @@ app.UseAuthorization();
 
 app.MapStaticAssets();
 
-/*  Hans la in denna kod i början av videon T&T Backend, och skapade ny OverviewController
-
+/*  Från början av videon T&T Backend, och skapade OverviewController
 app.UseRewriter(new RewriteOptions().AddRedirect("^$", "/admin/overview"));
 app.MapControllerRoute(
     name: "default",

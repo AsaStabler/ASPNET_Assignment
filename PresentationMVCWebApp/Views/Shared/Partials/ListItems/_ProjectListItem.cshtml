@@ -1,0 +1,43 @@
+﻿@model ProjectViewModel
+
+<div class="project card1" data-project-id="@Model.Id">
+	<div class="card-header">
+		<div class="project-image">
+			@* <img src="/images/projects/project-template-purple.svg" alt="template project" /> *@
+			<img src="@Model.Image" alt="template project" />
+		</div>
+		<h6 class="project-name">@Model.ProjectName</h6>
+		<span class="client-name">@Model.ClientName</span>
+		<div id="project-actions-container">
+			<button type="button" data-type="dropdown" data-target="#project-dropdown-@Model.Id" class="btn-action">
+				<i class="fa-solid fa-ellipsis"></i>
+			</button>
+			<div id="project-dropdown-@Model.Id" class="dropdown">
+				<div class="dropdown-body">
+					<nav class="dropdown-actions">
+						<a class="dropdown-action" href="@Url.Action("Projects", "Projects", new {id = Model.Id})">
+						@* <a class="dropdown-action" data-modal="true" data-target="#editProjectModal"> *@	
+ 						<i class="fa-duotone fa-solid fa-pen-to-square"></i>
+							<span>Edit</span>
+						</a>
+						@* <a class="dropdown-action" href="#">
+							<i class="fa-duotone fa-solid fa-user-plus" style="--fa-primary-opacity: 0.4; --fa-secondary-opacity: 1;"></i>
+							<span>Add Member</span>
+						</a> *@
+					</nav>
+					<div class="divider"></div>
+					<nav class="dropdown-actions">						
+						<a class="dropdown-action" href="@Url.Action("DeleteProject", "ProjectsPost", new {id = Model.Id})">
+							<i class="fa-duotone fa-solid fa-trash"></i>
+							<span>Delete</span>
+						</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card-body">
+		<p>@Model.Description</p>
+	</div>
+	<div class="card-footer"></div>
+</div>

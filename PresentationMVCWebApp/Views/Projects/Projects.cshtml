@@ -1,21 +1,28 @@
-﻿@{
+﻿@model ProjectsViewModel
+@{
 	ViewData["Title"] = "Projects";
 }
 
-<partial name="Partials/Sections/_AddProjectForm" />
-<partial name="Partials/Sections/_EditProjectForm" />
+@await Html.PartialAsync("Partials/Sections/_AddProjectForm", Model.AddProjectFormData)
+@await Html.PartialAsync("Partials/Sections/_EditProjectForm", Model.EditProjectFormData)
 
+<!--section id="projects" class="page"-->
 <section id="projects">
 	<header>
 		<h2>@ViewData["Title"]</h2>
+		@* <i class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i> *@
 		<button type="button" data-modal="true" data-target="#addProjectModal" class="btn btn-add btn-blue">Add Project</button>
 	</header>
 
-	<div class="surface">
-		<div>
-			<i class="fa-regular fa-ellipsis" data-modal="true" data-target="#editProjectModal"></i>
-		</div>
-		
+	<div class="project-list">
+
+		@if (Model.Projects != null && Model.Projects.Any())
+		{
+			@foreach(var project in Model.Projects)
+			{
+				@await Html.PartialAsync("Partials/ListItems/_ProjectListItem", project)
+			}
+		}
 	</div>
 
 </section>

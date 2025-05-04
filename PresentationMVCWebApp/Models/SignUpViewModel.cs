@@ -15,11 +15,13 @@ public class SignUpViewModel
     [Required(ErrorMessage = "Required")]
     public string LastName { get; set; } = null!;
 
+    /* [RegularExpression(@"")] */
     [Display(Name = "Email", Prompt = "Enter email address")]
     [DataType(DataType.EmailAddress)]
     [Required(ErrorMessage = "Required")]
     public string Email { get; set; } = null!;
 
+    /* [RegularExpression(@"")] */
     [Display(Name = "Password", Prompt = "Enter password")]
     [DataType(DataType.Password)]
     [Required(ErrorMessage = "Required")]
