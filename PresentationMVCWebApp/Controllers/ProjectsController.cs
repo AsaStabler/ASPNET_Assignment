@@ -14,7 +14,7 @@ public class ProjectsController(IProjectService projectService) : Controller
     [Route("")]
     public async Task<IActionResult> Projects(string id)
     {
-        //ViewBag.OpenEdit = "no";
+        
 
         //Reads in all Projects
         var response = await _projectService.GetProjectsAsync();
@@ -26,8 +26,6 @@ public class ProjectsController(IProjectService projectService) : Controller
             Projects = newList
         };
 
-        //TO DO: Måste ändra detta - annars öppnas EditModalen efter att man har skapat
-        //                           ett nytt project i AddModalen
         if (id != null)
         {
             //Get the Project which is to be edited
@@ -46,8 +44,8 @@ public class ProjectsController(IProjectService projectService) : Controller
                 //Set this EditProjectViewModel to ProjectsViewModel for the Projects view
                 viewModel.EditProjectFormData = editProjectVM;
 
+                //Set OpenEdit which will open the EditProject modal (via JavaScript function as page load)
                 viewModel.OpenEdit = "yes";
-                //ViewBag.OpenEdit = "yes";
             }
         }
 

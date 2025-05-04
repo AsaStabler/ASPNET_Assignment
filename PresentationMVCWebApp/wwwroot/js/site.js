@@ -188,16 +188,6 @@
 })
 
 function openEditProjectModal(param) {
-    console.log("hej från site.js");
-
-    if (param == 'yes')
-        console.log("param är yes");
-
-    if (param == 'no')
-        console.log("param är no");
-
-    if (param == '')
-        console.log("param är blank");
 
     if (param == 'yes') { 
         const modal = document.querySelector('#editProjectModal')
@@ -205,7 +195,8 @@ function openEditProjectModal(param) {
         if (modal)
             modal.style.display = 'flex';
 
-        console.log("flex has been set");
+        //Remove id from querystring
+        window.history.replaceState({}, document.title, window.location.pathname);
     }
 }
 

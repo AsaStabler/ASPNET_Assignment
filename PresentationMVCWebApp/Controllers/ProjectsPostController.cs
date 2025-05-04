@@ -32,6 +32,7 @@ public class ProjectsPostController(IProjectService projectService) : Controller
         var result = await _projectService.CreateProjectAsync(projectFormData);
 
         //TO DO: Handle result!
+
         //if (result)
         //{
         //    return Ok(new { success = true });
@@ -67,6 +68,7 @@ public class ProjectsPostController(IProjectService projectService) : Controller
         var result = await _projectService.UpdateProjectAsync(projectFormData);
 
         //TO DO: Handle result!
+
         //if (result)
         //{
         //    return Ok(new { success = true });
@@ -76,8 +78,8 @@ public class ProjectsPostController(IProjectService projectService) : Controller
         //    return Problem("Unable to submit data.");
         //}
 
-        //return RedirectToAction("Projects", "Projects");
         return Ok();
+        //return RedirectToAction("Projects", "Projects");
     }
 
     public async Task<IActionResult> DeleteProject(string id)
